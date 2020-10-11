@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title id="title"></title>
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+      <link rel="stylesheet" type="text/css" href="css/style.css" />
+      <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+   </head>
+   <body>
+      <div rate_wrapper style="display: none;" >
+         <basis core="repeater" name="rate"  datamembername="db.rate" class="rate_basis"  run="atclient"  renderto="*" >
+            <basis core="dbsource" source="demo_userbehaviorapi" run="atclient" name="db"
+               usedforid="1377042" userid="{##rate.current.userid##}" rate="{##rate.current.rate##}" >
+               <member request="rate" type="scalar" name="getrate" preview="" ></member>
+            </basis>
+            <basis core="print" datamembername="db.getrate" run="atclient" renderto=".rate_result">
+               <face>
+                  <span class="time_out">  امتیاز شما با موفقیت ثبت شد</span>
+               </face>
+            </basis>
+            <basis core="dbsource" source="demo_userbehaviorapi" name="db" cache="refresh" usedforid="1377042"   run="atclient" >
+               <member request="avgrate" type="scalar" name="avgrate_click" preview="true" ></member>
+            </basis>
+            <basis core="print" datamembername="db.avgrate_click" run="atclient"  renderto=".rate_avg_result">
+               <else-layout>
+                  <script type="text/template">
+                     <input type="hidden" value="0" id="average" name="average">
+                  </script>
+               </else-layout>
+               <face>
+                  <script type="text/template">
+                     <input type="hidden" value="@average" id="average" name="average">
+                  </script>
+               </face>
+            </basis>
+         </basis>
+      </div>
+      <div class="container">
+         <basis core="dbsource" source="demo_userbehaviorapi" name="db" usedforid="1377042" cache="refresh"   run="atclient" >
+            <member request="avgrate" type="scalar" name="avgrate" preview="true" ></member>
+         </basis>
+         <div style="display: none;">
+            <basis core="print" datamembername="db.avgrate" run="atclient" renderto=".rate_avg_result" >
+               <else-layout>
+                  <script type="text/template">
+                     <input type="hidden" value="0" id="average" name="average">
+                  </script>
+               </else-layout>
+               <face>
+                  <script type="text/template">
+                     <input type="hidden" value="@average" id="average" name="average">
+                  </script>
+               </face>
+            </basis>
+         </div>
+         <div class="row">
+            <div class="col-lg-12">
+               <div class="row">
+                  <div class="col-lg-6">
+                     <div class="product-pic-zoom">
+                        <img class="product-big-img" src="http://demo1.clothe.sample.ir/1000232093941001B" alt="">                           
+                     </div>
+                     <div class="product-thumbs">
+                        <div class="product-thumbs-track ps-slider owl-carousel owl-loaded owl-drag">
+                           <div class="owl-stage-outer">
+                              <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 189px;">
+                                 <div class="owl-item active" style="width: 178.333px; margin-right: 10px;">
+                                    <div class="pt active" data-imgbigurl="demo1.clothe.sample.ir/1000232093941001B"><img src="http://demo1.clothe.sample.ir/1000232093941001B" alt=""></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev disabled"><i class="fa fa-angle-left"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="fa fa-angle-right"></i></button></div>
+                           <div class="owl-dots disabled"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-lg-6">
+                     <div class="product-details">
+                        <div class="pd-title">
+                           <h3>لباس مجلسی</h3>
+                           <a class="heart-icon save_bookmark bookmark_result" style="display: inline;"><i class="fa fa-bookmark"></i></a>
+                        </div>
+                        <div class="rate_avg_result">
+                           <input type="hidden" value="4" id="average" class="average" name="average">
+                        </div>
+                        <div class="pd-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div>
+                        <div class=" give_rating">
+                           <span>شما به این محصول چه امتیازی می دهید ؟ </span>
+                           <div class="no_loginp" style="display: none;">
+                              <a href="login.html">وارد شوید</a>
+                           </div>
+                           <div class="loginp" style="display: block;">
+                              <form id="rate_form">
+                                 <select name="rate" class="rate">
+                                    <option value="1">1</option>
+                                    <option value="2"> 2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                 </select>
+                                 <input type="button" class="submit_rate" value="ثبت " name="">
+                              </form>
+                              <div class="rate_result"></div>
+                              <div id="rate_msg"></div>
+                           </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="pd-desc">
+                           <h4></h4>
+                        </div>
+                        <form id="addtobasket_form">
+                           <input type="hidden" name="usedforid" value="1377042">
+                           <div class="pd-color">
+                              <div class="pd-color-choose">
+                                 <h6>رنگ بندی  </h6>
+                                 <div class="cc-item selected_item">
+                                    <input type="radio" id="774160" name="id" checked="true" value="774160" class="color_inp">
+                                    <label for="774160" class="color_lbl" data-color=" "></label>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="quantity">
+                              <div class="pro-qty"><span class="dec qtybtn">-</span>
+                                 <input type="text" name="count" id="count" value="1">
+                                 <span class="inc qtybtn">+</span>
+                              </div>
+                              <button type="button" class="primary-btn pd-cart">اضافه کردن به سبد خرید</button>
+                           </div>
+                           <div class="clr"></div>
+                           <div class="factor_resultt"></div>
+                        </form>
+                        <ul class="pd-tags">
+                           <li><span>برند پیراهن</span>: MILANO BRIDE</li>
+                           <li><span>نوع پیراهن</span>: لباس شب و مهمانی</li>
+                           <li><span>قد پیراهن</span>: میدی</li>
+                           <li><span>جنس پارچه</span>: ابریشم</li>
+                           <li><span>گروه رنگی</span>: سیاه</li>
+                           <li><span>رنگ</span>: سیاه</li>
+                           <li><span>سایز</span>: فری سایز</li>
+                           <li><span>مناسب برای</span>: دختران</li>
+                           <li><span>مدل یقه</span>: قایقی</li>
+                           <li><span>نوع آستین</span>: آستین حلقه ای</li>
+                           <li><span>ویژگی ها</span>: آستر</li>
+                           <li><span>ویژگی های شستشو</span>: شستشو با آب سرد</li>
+                           <li><span>شرایط اتو کردن</span>: اتو با بخار</li>
+                           <li><span>کشور سازنده</span>: ایتالیا</li>
+                        </ul>
+                        <div class="pd-share">
+                           <div class="pd-social">
+                              <a href="#"><i class="ti-facebook"></i></a>
+                              <a href="#"><i class="ti-twitter-alt"></i></a>
+                              <a href="#"><i class="ti-linkedin"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+      <script>
+         var host = {
+             Debug: false,
+             AutoRender: false , 
+             OnRendered: onRendered,
+             OnCallExecuted: onCallExecuted,
+             OnRendering: onRendering,
+             Settings: {        
+                 'connection.web.callcommand':'http://127.0.0.1:8080/',
+                 'connection.web.demo_basiscoreapi': 'http://dbsource.basiscore.net/data.json',
+                 'connection.web.demo_userbehaviorapi':'http://dbsource.basiscore.net/data.json',
+                 'default.dbsource.verb': 'post',
+                 'default.call.verb':'get',
+                 'default.viewCommand.groupColumn':'prpid',
+                 'default.dmnid': '23',
+                 'default.binding.regex':'\\{##([^#]*)##\\}'         
+             }
+         }
+         $(document).ready(async _ => {
+         
+         await $bc().RenderAsync('.container')
+         })
+             function onCallExecuted() {
+                 console.log('OnCallExecuted');
+             }
+             function onRendering() {	 
+             
+             }
+             function onRendered(e){
+                 var class_name = $(e).attr("class")
+                 
+                 if (class_name == "container"){
+                 $('.submit_rate').click(async e => { 
+                     var rate = $(".rate").val()
+                     await $bc().RenderAsync('.rate_basis', async localContext => {          
+                  var data = {
+                    userid: 122333,            
+                    rate: rate 
+                  };     
+                  await $bc().AddObjectAsync(data, 'db.rate', localContext);
+              });
+                 })
+         
+                 var rate = $("#average").attr("value")
+            
+             var not_rete = 5 - parseInt(rate)        
+             $(".pd-rating").empty()
+             for(var i = 0 ; i <rate ; i++){
+                 $(".pd-rating").append('<i class="fa fa-star"></i>')
+             }
+             for(var i = 0 ; i <not_rete ; i++){
+                 
+                 $(".pd-rating").append('<i class="fa fa-star-o"></i>')
+             }
+             }
+             else if (class_name == "rate_basis"){
+                 var rate = $("#average").attr("value")
+         
+             var not_rete = 5 - parseInt(rate)        
+             $(".pd-rating").empty()
+             for(var i = 0 ; i <rate ; i++){
+                 $(".pd-rating").append('<i class="fa fa-star"></i>')
+             }
+             for(var i = 0 ; i <not_rete ; i++){
+                 
+                 $(".pd-rating").append('<i class="fa fa-star-o"></i>')
+             }
+             }
+             }
+             
+      </script>
+      <script src="http://basiscore.net/_js/basiscore.min.js"></script>
+      <script src="http://basiscore.net/_js/alasql.min.js"></script>
+   </body>
+</html>
+
