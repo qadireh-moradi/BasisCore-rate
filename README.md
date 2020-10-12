@@ -55,14 +55,12 @@ Settings: {
 ```
 For initialization
 ```
-```JavaScript
 $(document).ready(async _ => {         
          await $bc().RenderAsync('.container')
          })
 ```
-``` also you can set scripts in OnRendered function ro run after rendering
+ also you can set scripts in OnRendered function ro run after rendering
 ```
-```javascript
 function onRendered(e){}
 ```
 
