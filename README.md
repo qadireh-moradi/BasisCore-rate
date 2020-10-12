@@ -1,12 +1,13 @@
-BasisCore-rate
+BasisCore
 ====
 
-Standalone BasisCore library 
+BasisCore library 
 
 
 ## Installation
 
-[![component](https://component.jit.su/component-badge.svg)]( https://basiscore.com/en/What-is-BasisCore)
+[![More Info](https://component.jit.su/component-badge.svg)]( https://basiscore.com/en/What-is-BasisCore)
+```
 Use 
 ```
 <script src="http://basiscore.net/_js/basiscore.min.js"></script>
@@ -52,6 +53,14 @@ Settings: {
 
 }
 ```
+For initialization
+```javascript
+$(document).ready(async _ => {         
+         await $bc().RenderAsync('.container')
+         })
 
+``` also you can set scripts in OnRendered function ro run after rendering
+```javascript
+function onRendered(e){}
 
 
