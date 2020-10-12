@@ -7,7 +7,7 @@ BasisCore library
 ## Installation
 
 [![More Info](https://component.jit.su/component-badge.svg)]( https://basiscore.com/en/What-is-BasisCore)
-```
+
 Use 
 ```
 <script src="http://basiscore.net/_js/basiscore.min.js"></script>
