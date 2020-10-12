@@ -55,7 +55,7 @@ Settings: {
 ```
 For initialization
 ```
-```javascript
+```JavaScript
 $(document).ready(async _ => {         
          await $bc().RenderAsync('.container')
          })
